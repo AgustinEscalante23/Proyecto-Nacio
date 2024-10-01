@@ -7,6 +7,6 @@ router = routers.DefaultRouter()
 router.register(r'socios', SociosViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('', index, name='index'),
+    path('api_socios/', include(router.urls)),
+    # path('', index, name='index'),
 ]
