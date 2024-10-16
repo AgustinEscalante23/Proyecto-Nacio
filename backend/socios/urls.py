@@ -8,5 +8,5 @@ router.register(r'socios', SociosViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', index, name='index'),
+    path('socios/', index, name='socios'),
 ]

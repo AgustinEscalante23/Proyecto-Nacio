@@ -1,0 +1,27 @@
+.navbar {
+    background: #182240;
+    margin: -25px -10px 20px -10px;
+    font-style: bold;
+    font-size: 20px;
+    padding: 3px 0 3px 0;
+}
+
+
+.navbar ul li {
+    list-style: none;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar ul li a :hover {
+    color: #9BDEBB;
+}
+

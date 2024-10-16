@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/styles/navbar.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="/homepage">Inicio</a>
+        </li>
+        <li>
+          <a href="/inscripciones">inscripciones</a>
+        </li>
+        <li>
+          <a href="/calendario">calendario</a>
+        </li>
+        <li>
+          <a href="/materias">Materias</a>
+        </li>
+        <li>
+          <a href="/logout">Cerrar Sesion</a>
+        </li>
+        {% else %}
+        <li>
+          <a href="/stock">Inventario</a>
+        </li>
+        <li>
+          <a href="/prestamos">Prestamos</a>
+        </li>
+        <li>
+            <a href="/socios">Socios</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+    <main class="container">
+      {% block content %} {% endblock %}
+    </main>
+  </body>
+</html>
