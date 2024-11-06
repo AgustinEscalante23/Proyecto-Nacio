@@ -4,38 +4,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles\socios.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'styles/socios.css' %}" type="text/css"/>
     <title>Gestión de Socios</title>
 </head>
-
 <body class="body">
-    <div id="socio-list"></div>
-    <form id="socio-form" enctype="multipart/form-data">
+    <form id="socios-form">
+    <!-- <input type="hidden" id="id" name="id"> -->
         <input type="text" id="Nombre_Completo" name="Nombre_Completo" placeholder="Nombre Completo" required>
         <input type="number" id="Documento" name="Documento" placeholder="Documento" required><br>
         <input type="number" id="Telefono" name="Telefono" placeholder="Teléfono" required> 
         <input type="text" id="Domicilio" name="Domicilio" placeholder="Domicilio" required>
-        <button type="submit" class="buttonA">Agregar Socio</button>
+        <button type="submit" id="enviar">Agregar Socio</button>
+        <button type="button" onclick="resetForm()" id="cancelar" style="display: none;">Cancelar</button>
     </form>
-    <h1></h1>
-    <table id="socio-list" border="2">
+
+    <!-- Tabla para mostrar los socios -->
+    <table id="socios-list" border="2">
         <thead>
             <tr>
                 <th>Nombre</th>
                 <th>DNI</th>
-                <th>Dirección</th>
                 <th>Teléfono</th>
-                <th>Meses</th>
+                <th>Dirección</th>
+                <th>Foto</th>
+                <th>Acciones</th>
             </tr>
         </thead>
-        <tbody id="socio-list-body"></tbody>
+        <tbody id="socio-list-body">
+            <!-- Los socios se insertarán aquí -->
+        </tbody>
     </table>
 
     <script src="{% static 'scripts/scripts.js' %}"></script>
 </body>
 </html>
-{% endblock %}1
+{% endblock %}
