@@ -1,19 +1,25 @@
-from rest_framework import viewsets, permissions
-from .models import producto, estado, categoria
-from .serializers import productoSeralizer, estadoSeralizer, categotiaSeralizer
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
+from .models import Producto, Estado, Categoria
+from .serializers import ProductoSerializer, EstadoSerializer, CategoriaSerializer
 
-class productoViewSet(viewsets.ModelViewSet):
-    queryset = producto.objects.all()
-    permission_classes = [permissions.AllowAny]  # Definido como una lista
-    serializer_class = productoSeralizer
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
 
-class estadoViewSet(viewsets.ModelViewSet):
-    queryset = estado.objects.all()
-    permission_classes = [permissions.AllowAny]  # Definido como una lista
-    serializer_class = estadoSeralizer
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class categoriaViewSet(viewsets.ModelViewSet):
-    queryset = categoria.objects.all()
+class EstadoViewSet(viewsets.ModelViewSet):
+    queryset = Estado.objects.all()
     permission_classes = [permissions.AllowAny]  # Definido como una lista
-    serializer_class = categotiaSeralizer
+    serializer_class = EstadoSerializer
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    permission_classes = [permissions.AllowAny]  # Definido como una lista
+    serializer_class = CategoriaSerializer
 

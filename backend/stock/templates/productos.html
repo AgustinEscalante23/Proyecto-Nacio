@@ -1,0 +1,72 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/producto.css' %}" type="text/css" />
+    <title>Gestión de Stock</title>
+    <style>
+        .categoria-table {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div>
+        <form id="stock-form">
+            <div>
+                <label for="nombre">Nombre</label> <br>
+                <input type="text" id="nombre" placeholder="Nombre" required>
+            </div>
+            <div class="row-select">
+                <div>
+                    <label for="estado">Estado</label> <br>
+                    <select id="estado" required>
+                        <option value="">Seleccione un estado</option>
+                        <!-- Las opciones se llenarán aquí mediante JavaScript -->
+                    </select>
+                </div>
+                <div>
+                    <label for="categoria">Categoría</label> <br>
+                    <select id="categoria" required>
+                        <option value="">Seleccione una categoría</option>
+                        <!-- Las opciones se llenarán aquí mediante JavaScript -->
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="descripcion">Descripción</label> <br>
+                <input type="text" id="descripcion" placeholder="Descripción">
+            </div>
+            <!-- Botón de agregar inventario al final del formulario -->
+            <button type="submit" id="submit-btn" class="button">Agregar Inventario</button>
+            <button onclick="resetForm()" id="cancel-btn" class="cancel-button" style="display: none;">Cancelar</button>
+        </form>
+        <button class="button" onclick="window.location.href='{% url 'estado' %}'">Estados</button>
+    <button class="button" onclick="window.location.href='{% url 'categoria' %}'">Categorias</button>
+    </div>
+    <br>
+    <table id="stock-list" border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Código</th>
+                <th>Categoría</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="product-tbody">
+            <!-- Los productos se insertarán aquí -->
+        </tbody>
+    </table>
+
+    <script src="{% static 'scripts/producto.js' %}"></script> <!-- Asegúrate de que la ruta sea correcta -->
+</body>
+
+{% endblock %}

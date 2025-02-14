@@ -1,18 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'css/producto.css' %}" type="text/css"/>
     <title>Gestión de Estado</title>
 </head>
 <body>
-    <h1>Gestión de Estado</h1>
-    <div id="stock-list"></div>
-    <form id="stock-form">
+    <!-- Botón para regresar a la página anterior -->
+    <button id="backButton">Regresar</button>
+    <form id="status-form">
+        <h2> Estados</h2>
         <input type="text" id="nombre" placeholder="Nombre" required><br>
         <button type="submit">Agregar Estado</button>
     </form>
-    <script src="script.js"></script>
+    <!-- Tabla para mostrar los estados -->
+    <table id="status-list" border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los estados se insertarán aquí -->
+        </tbody>
+    </table>
+    
+    <script src="{% static 'scripts/estado.js' %}"></script>
+    <script>
+        document.getElementById("backButton").addEventListener("click", function() {
+            window.history.back();
+        });
+    </script>
 </body>
 </html>

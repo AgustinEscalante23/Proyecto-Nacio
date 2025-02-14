@@ -1,0 +1,167 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #97A4D0; /* Ajuste para un color similar al de la imagen */
+    margin: 0; /* Eliminar márgenes predeterminados */
+    padding: 20px; /* Agregar un padding al cuerpo */
+}
+h2 {
+    color:#182240
+}
+#div-form {
+    background-color: #2D3073;
+    padding: 20px; /* Agregar padding para que el contenido no esté pegado a los bordes */
+    max-width: 600px; /* Establecer un ancho máximo si es necesario */
+    margin: auto; /* Centrar el contenedor */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    background-color: #7182B9; /* Color de fondo de la tabla */
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #7182B9; /* Color de borde para las celdas */
+}
+
+th {
+    background-color: #2D3073; /* Color del fondo del encabezado */
+    color: #D9D9D9;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+td {
+    background-color: #D9D9D9; /* Fondo de las celdas */
+    color: #333; /* Color del texto de las celdas */
+    font-weight: lighter;
+}
+
+tbody tr:hover {
+    background-color: #fb1c1c; /* Color cuando se pasa el mouse por encima */
+}
+
+.buttonA {
+    background-color: #484F73;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: auto; /* Ancho automático para un tamaño razonable */
+    min-width: 150px; /* Ancho mínimo para los botones */
+    margin: 10px 5px; /* Margen para separación */
+}
+
+button {
+    background-color: #182240; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold;
+    width: auto; /* Ancho automático */
+    min-width: 150px; /* Ancho mínimo */
+    margin: 10px 0; /* Margen superior e inferior para separación */
+    align-self: flex-start; /* Alinear el botón al inicio del contenedor */
+}
+
+.cancel-button {
+    background-color: #ff0000; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold;
+    width: auto; /* Ancho automático */
+    min-width: 150px; /* Ancho mínimo */
+    margin: 10px 0; /* Margen superior e inferior para separación */
+    align-self: flex-start; /* Alinear el botón al inicio del contenedor */
+}
+
+button:hover {
+    background-color: #7074cc; /* Color de fondo al pasar el mouse */
+}
+
+form {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    padding: 20px 10px;
+    margin: 20px 10px;
+    display: flex; /* Usar flexbox para el formulario */
+    flex-direction: column; /* Colocar los elementos en columna */
+}
+
+label {
+    margin-bottom: 5px; 
+    margin-right: 20px;/* Espacio entre la etiqueta y el campo de entrada */
+    color: #182240; /* Cambia este valor al color que desees */
+    font-weight: bold; /* Opcional: hace que el texto sea negrita */
+}
+
+input[type="text"], input[type="number"], select {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:95%; /* Ancho completo para los campos */
+    padding: 15px; /* Aumentar el padding para mayor altura */
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    border: 1px; /* Asegurar que el borde sea consistente */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre los campos */
+    background-color: #C0C0C0;
+}
+
+/* Estilo para la fila de Estado y Categoría */
+.row-select {
+    display: flex; /* Usar flexbox para alinear Estado y Categoría */
+    justify-content: space-between; /* Espacio entre los selectores */
+}
+
+.row-select > div {
+    flex: 1; /* Cada selector ocupa el mismo espacio */
+    margin-right: 10px; /* Espacio entre los selectores */
+}
+
+.row-select > div:last-child {
+    margin-right: 0; /* Sin margen derecho en el último elemento */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    input[type="text"], input[type="number"], select {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+    }
+
+    button {
+        width: auto; /* Ancho automático en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 14px; /* Reducir el tamaño de la fuente en tablas en pantallas pequeñas */
+    }
+
+    th, td {
+        padding:  8px 10px; /* Reducir el padding en celdas de la tabla */
+    }
+
+    button {
+        padding: 8px 10px; /* Reducir el padding de los botones */
+    }
+
+    .buttonA {
+        padding: 8px 10px; /* Reducir el padding de los botones personalizados */
+    }
+}
