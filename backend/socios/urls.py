@@ -1,7 +1,8 @@
 from rest_framework import routers
 from .api import SociosViewSet
 from django.urls import path, include
-from .views import index
+from .views import index, SociosViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'socios', SociosViewSet)
