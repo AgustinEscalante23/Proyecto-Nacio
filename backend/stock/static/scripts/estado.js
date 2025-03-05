@@ -1,8 +1,14 @@
-document.getElementById('status-form').addEventListener('submit', function(event) {
+document.getElementById('status-form').addEventListener('submit', async function(event) {
     event.preventDefault();
     
     const nombre = document.getElementById('nombre').value;
-
+    let listaEstados = await obtenerListaEstados();
+    for (let estado of listaEstados) {
+        if (estado == nombre) {
+            alert("El estado que desea crear ya existe.")
+            return
+        }
+    }
     // Crear nuevo estado
     fetch('/api_stock/estado/', {
         method: 'POST',
@@ -33,8 +39,8 @@ function fetchEstados() {
                 estadoRow.innerHTML = `
                     <td>${estado.nombre}</td>
                     <td>
-                        <button onclick="deleteEstado(${estado.id})">Eliminar</button>
-                        <button onclick="editEstado(${estado.id}, '${estado.nombre}')">Editar</button>
+                    <button onclick="deleteEstado(${estado.id})">Eliminar</button>
+                    <button onclick="editEstado(${estado.id}, '${estado.nombre}')">Editar</button>
                     </td>
                 `;
                 stockList.appendChild(estadoRow);
@@ -60,9 +66,17 @@ function deleteEstado(id) {
 }
 
 // Función para editar un estado
-function editEstado(id, nombre) {
+async function editEstado(id, nombre) {
     const nuevoNombre = prompt("Edita el nombre del estado:", nombre);
+
     if (nuevoNombre) {
+        let listaEstados = await obtenerListaEstados();
+        for (let estado of listaEstados) {
+            if (estado == nuevoNombre) {
+                alert("El nombre que ha elegido ya pertenece a otro estado")
+                return
+            }
+        }
         fetch(`/api_stock/estado/${id}/`, {
             method: 'PUT',
             headers: {
@@ -79,5 +93,18 @@ function editEstado(id, nombre) {
     }
 }
 
+async function obtenerListaEstados() {
+    try {
+        let response = await fetch('/api_stock/estado/');
+        let data = await response.json();
+        
+        let listaEstados = data.map(estado => estado.nombre); // Extraer solo los nombres
+        return listaEstados; // Ahora devuelve la lista de estados
+        
+    } catch (error) {
+        console.error('Error:', error);
+        return []; // En caso de error, devuelve una lista vacía
+    }
+}
 // Obtener los estados al cargar la página
 fetchEstados();

@@ -50,22 +50,8 @@
     <button class="button" onclick="window.location.href='{% url 'categoria' %}'">Categorias</button>
     </div>
     <br>
-    <table id="stock-list" border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Estado</th>
-                <th>Código</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="product-tbody">
-            <!-- Los productos se insertarán aquí -->
-        </tbody>
-    </table>
-
+    <div id="tablas-container" class="tablas-container">
+    </div>
     <script src="{% static 'scripts/producto.js' %}"></script> <!-- Asegúrate de que la ruta sea correcta -->
 </body>
 

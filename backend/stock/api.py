@@ -1,18 +1,48 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
+from django.db.models import Q
 from .models import Producto, Estado, Categoria
-from .serializers import ProductoSerializer, EstadoSerializer, CategoriaSerializer
+from .serializers import ProductoSerializer, EstadoSerializer, CategoriaSerializer, ProductoReadSerializer
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
-    serializer_class = ProductoSerializer
+    
+    def get_serializer_class(self):
+        """Usa un serializer distinto para GET y para las demás operaciones."""
+        if self.action in ["list", "retrieve"]:  
+            return ProductoReadSerializer  # GET → Devuelve prestatario y productos completos
+        return ProductoSerializer  # POST/PUT → Recibe prestatario y productos como IDs
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get_queryset(self):
+        query = self.request.query_params.get("q", "").strip()  
+        categoria_id = self.request.query_params.get("categoria")
+        estado_id = self.request.query_params.get("estado")
+        prestado_filtro = self.request.query_params.get("prestado", "").strip().lower()
+
+        productosBuscados = Producto.objects.all()  # Inicialmente, trae todos los productos
+
+        if query:
+            productosBuscados = productosBuscados.filter(
+                Q(nombre__icontains=query) | Q(codigo__icontains=query)
+            )
+
+        if estado_id and estado_id.isdigit():
+            productosBuscados = productosBuscados.filter(estado__id=int(estado_id))
+
+        if categoria_id and categoria_id.isdigit():
+            productosBuscados = productosBuscados.filter(categoria__id=int(categoria_id))
+
+        if prestado_filtro in ["true", "false"]:
+            productosBuscados = productosBuscados.filter(prestado=(prestado_filtro == "true"))
+
+        return productosBuscados.distinct()
+    
+    def list(self, request, *args, **kwargs):
+        if request.query_params.get("count", "").lower() == "true":
+            cantidad = self.get_queryset().count()
+            return Response({"cantidad": cantidad})  # Devuelve solo la cantidad
+
+        return super().list(request, *args, **kwargs)  # Retorna productos normalmente
 
 class EstadoViewSet(viewsets.ModelViewSet):
     queryset = Estado.objects.all()

@@ -137,6 +137,75 @@ input[type="text"], input[type="number"], select {
     margin-right: 0; /* Sin margen derecho en el último elemento */
 }
 
+/* estilos para las tablas */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+}
+
+.boton {
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.triangulo {
+    transition: transform 0.3s;
+    margin-right: 8px;
+}
+
+.tabla-contenedor {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.tabla-contenedor.mostrar {
+    max-height: 500px; /* Ajusta según el contenido */
+}
+
+.lista-estados {
+    margin: 0%;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas */
+    list-style-type: disc;
+    border: 1px solid #ccc;
+    width: auto;
+    background: white;
+    display: flex;
+    gap: 10px;
+    list-style-position: inside;
+}
+.lista-estados li::marker {
+    color: #2D3073; /* Cambia solo el color del círculo */
+    font-size: 20px; /* Ajusta el tamaño de la viñeta */
+}
+.lista-estados li {
+    padding: 10px;
+    cursor: pointer;
+}
+.lista-estados li:hover {
+    background-color: #f0f0f0;
+}
+
+.encabezado {
+    display: flex;
+    background-color: #2D3073;
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    justify-content: space-between;
+    margin-bottom: 0%;
+}
+
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
     input[type="text"], input[type="number"], select {

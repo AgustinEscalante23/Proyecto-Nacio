@@ -1,83 +1,102 @@
 document.addEventListener('DOMContentLoaded', () => {
     const fetchAndPopulate = async (url, elementId, key) => {
         try {
-            let objetos = [];
             const response = await fetch(url);
             if (!response.ok) throw new Error(`Error al cargar ${key}`);
             const data = await response.json();
             const select = document.getElementById(elementId);
             data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.textContent = item.nombre;
-                select.appendChild(option);
-                objetos.push([item.id, item.nombre])
+                    const option = document.createElement('option');
+                    option.value = item.id;
+                    option.textContent = item.nombre;
+                    select.appendChild(option);
             });
-            return(objetos)
         } catch (error) {
             console.error(`Error al cargar ${key}:`, error);
         }
     };
 
-    const obtenerCategoriasEstados = async (url, key) => {
+    const crearTablas = async () => {
         try {
-            let objetos = [];
-            const response = await fetch(url);
-            if (!response.ok) throw new Error(`Error al obtener ${key}.`);
+            const response = await fetch('/api_stock/categoria/');
             const data = await response.json();
-            data.forEach(item => {
-                objetos.push([item.id, item.nombre])
-            });
-            return objetos;
-        } catch (error) {
-            console.error(`Error al obtener ${key}:`, error);
-        }
-    };
+            const estadosResponse = await fetch('/api_stock/estado/');
+            const estadosData = await estadosResponse.json();
+            const tablasContainer = document.getElementById("tablas-container");
+            tablasContainer.innerHTML = '';
     
-    const fetchProductos = async () => {
-        try {
-            let estados = await obtenerCategoriasEstados('/api_stock/estado/', 'estados');
-            let categorias = await obtenerCategoriasEstados('/api_stock/categoria/', 'categorias');
-            const response = await fetch('/api_stock/producto/');
-            if (!response.ok) throw new Error('Error al cargar los productos');
-            const data = await response.json();
-            const stockList = document.getElementById('product-tbody');
-            stockList.innerHTML = data.length ? data.map(producto => {
-                 // Buscar el estado correspondiente
-                let estadoNombre = "Sin estado";
-                for (let estado of estados) {
-                    if (estado[0] == producto.estado) {
-                        estadoNombre = estado[1];
-                        break;
-                    }
+            for (const categoria of data) {  // 🔹 Cambiado forEach() por for...of
+                const total = await obtenerCantidad("", categoria.id);
+                const prestados = await obtenerCantidad("", categoria.id, true);
+    
+                const div = document.createElement("div"); // 🔹 Se corrigió el error aquí
+                div.id = `categoria${categoria.id}-container`;
+                div.className = "contenedor";
+                div.innerHTML = `
+                    <div class="encabezado"> <div>${categoria.nombre}</div>  <div>Total: ${total}</div> </div>
+                    <ul id="estados${categoria.id}" class="lista-estados">
+                        <li id="prestado${categoria.id}" onclick="filtroPrestado('prestado${categoria.id}', 'buscar-productos${categoria.id}', 'tabla${categoria.id}')">
+                            Prestados: ${prestados}
+                        </li>
+                    </ul>
+                    <div class="boton" onclick="toggleTabla('tabla-contenedor${categoria.id}', 'triangulo${categoria.id}')">
+                        <span id="triangulo${categoria.id}" class="triangulo">▶</span>
+                    </div>
+                    <div class="tabla-contenedor" id="tabla-contenedor${categoria.id}">
+                        <label for="buscar-productos${categoria.id}">Buscar producto:</label>
+                        <input type="text" id="buscar-productos${categoria.id}" data-categoria="${categoria.id}" data-estado="" data-prestado=""
+                            placeholder="Buscar por nombre o código..." class="filtro">
+                        <br>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Código</th>
+                                    <th>Estado</th>
+                                    <th>Descripción</th>
+                                    <th>Está Prestado?</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabla${categoria.id}"></tbody>
+                        </table>
+                    </div>
+                `;
+    
+                const estadosList = div.querySelector(`#estados${categoria.id}`); // 🔹 Se obtiene el `ul` correctamente
+    
+                for (const estado of estadosData) {  // 🔹 Cambiado forEach() por for...of
+                    let cantidad = await obtenerCantidad(estado.id, categoria.id, false);
+                    const li = document.createElement("li");
+                    li.id = `estado${estado.id}${categoria.id}`;
+                    li.textContent = `${estado.nombre}: ${cantidad}`;
+                    li.onclick = function () {
+                        filtroEstado(`estado${estado.id}${categoria.id}`, `buscar-productos${categoria.id}`, estado.id, `tabla${categoria.id}`);
+                    };
+                    estadosList.appendChild(li);
                 }
-
-                // Buscar la categoría correspondiente
-                let categoriaNombre = "Sin categoría";
-                for (let categoria of categorias) {
-                    if (categoria[0] == producto.categoria) {
-                        categoriaNombre = categoria[1];
-                        break;
-                    }
-                }
-               return `
-                <tr>
-                    <td>${producto.nombre || 'Sin nombre'}</td>
-                    <td>${estadoNombre}</td>
-                    <td>${producto.codigo || 'Sin código'}</td>
-                    <td>${categoriaNombre}</td>
-                    <td>${producto.descripcion || 'Sin descripción'}</td>
-                    <td>
-                        <button class="delete-btn" data-id="${producto.codigo}">Eliminar</button>
-                        <button class="edit-btn" data-id="${producto.codigo}" data-nombre="${producto.nombre}" data-estado="${producto.estado}" data-categoria="${producto.categoria}" data-descripcion="${producto.descripcion}">Editar</button>
-                    </td>
-                </tr>`}).join('') : '<tr><td colspan="6">No hay productos disponibles.</td></tr>';
-            addEventListeners();
+    
+                tablasContainer.appendChild(div);
+                fetchProductos(`tabla${categoria.id}`, '', '', categoria.id, '');
+            }
         } catch (error) {
             console.error('Error:', error);
-            alert('Ocurrió un error al cargar los productos.');
         }
     };
+
+    async function obtenerCantidad(estado, categoria, prestado) {
+        try {
+            response = await fetch(`/api_stock/producto/?estado=${estado}&categoria=${categoria}&prestado=${prestado}&count=true`);
+            data = await response.json();
+            return data.cantidad
+        } catch (error){
+            console.error('Error:', error)
+        }
+
+    }
+
+    const detalleProducto = (producto) => {
+
+    }
 
     const addEventListeners = () => {
         document.querySelectorAll('.delete-btn').forEach(button => {
@@ -148,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (id) {
             url += `${id}/`;
-            method = 'PUT'
+            method = 'PATCH'
         }
         const requestBody = { nombre, estado: parseInt(estado), categoria: parseInt(categoria), descripcion};
         console.log('Request Body:', requestBody);
@@ -173,19 +192,105 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchAndPopulate('/api_stock/estado/', 'estado', 'estados');
     fetchAndPopulate('/api_stock/categoria/', 'categoria', 'categorías');
-    fetchProductos()
+    crearTablas();
     console.log('DOM completamente cargado y analizado');
 });
+
+const fetchProductos = async (idTabla, q, estado, categoria, prestado) => {
+    try {
+        const response = await fetch(`/api_stock/producto/?q=${q}&estado=${estado}&categoria=${categoria}&prestado=${prestado}`);
+        if (!response.ok) throw new Error('Error al cargar los productos');
+        const data = await response.json();
+        const tablaBody = document.getElementById(idTabla);
+        if (data.length) {
+            tablaBody.innerHTML = data.map(producto => {
+                return `
+                 <tr onclick="detalleProducto(producto)">
+                     <td>${producto.nombre || 'Sin nombre'}</td>
+                     <td>${producto.codigo || 'Sin código'}</td>
+                     <td>${producto.estado.nombre || 'Sin estado'}</td>
+                     <td>${producto.descripcion || 'Sin descripción'}</td>
+                     <td>${producto.prestado? "SI" : "NO" }</td>
+                 </tr>`}).join('')
+        } else {
+            '<tr><td colspan="4">No hay productos disponibles.</td></tr>';
+        }
+    
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Ocurrió un error al cargar los productos.');
+    }
+};
 
 function resetForm() {
     const form = document.getElementById('stock-form');
     const hiddenInput = document.getElementById('producto-id');
     const cancelarBtn = document.getElementById('cancel-btn');
     const enviarBtn = document.getElementById('submit-btn');
-    
+
     if (form) form.reset();
     if (hiddenInput) hiddenInput.remove();
     if (cancelarBtn) cancelarBtn.style.display = "none";
     if (enviarBtn) enviarBtn.textContent = "Agregar Inventario";
     
 };
+
+function toggleTabla(idTabla, idTriangulo) {
+    let tabla = document.getElementById(idTabla);
+    let triangulo = document.getElementById(idTriangulo);
+    
+    if (tabla.classList.contains("mostrar")) {
+        tabla.classList.remove("mostrar");
+        triangulo.style.transform = "rotate(0deg)"; // Flecha hacia la derecha
+    } else {
+        tabla.classList.add("mostrar");
+        triangulo.style.transform = "rotate(90deg)"; // Flecha hacia abajo
+    }
+}
+
+async function filtroPrestado(idPrestado, idFiltro, idTabla) {
+    const liPrestado = document.getElementById(idPrestado);
+    const filtro = document.getElementById(idFiltro);
+    const estadoFiltro = parseInt(filtro.getAttribute('data-estado'));
+    const categoriaFiltro = parseInt(filtro.getAttribute('data-categoria'));
+    const query = filtro.value;
+    const liEstadoAnterior = document.getElementById(`estado${estadoFiltro}${categoriaFiltro}`);
+    if (filtro.dataset.prestado != "true") {
+        if (liEstadoAnterior) {
+            liEstadoAnterior.style.backgroundColor = "white";
+        }
+        liPrestado.style.backgroundColor = "#f0f0f0";
+        filtro.dataset.prestado = "true";
+        filtro.dataset.estado = "";
+        fetchProductos(idTabla, query, "", categoriaFiltro, true)
+    } else {
+        liPrestado.style.backgroundColor = "white";
+        filtro.dataset.prestado = "";
+        fetchProductos(idTabla, query, "", categoriaFiltro, "")
+    }
+
+}
+
+async function filtroEstado(idLiEstado, idFiltro, idEstado, idTabla) {
+    const liEstadoActual = document.getElementById(idLiEstado);
+    const filtro = document.getElementById(idFiltro);
+    const estadoFiltro = parseInt(filtro.getAttribute('data-estado'));
+    const categoriaFiltro = parseInt(filtro.getAttribute('data-categoria'));
+    const query = filtro.value;
+    const liEstadoAnterior = document.getElementById(`estado${estadoFiltro}${categoriaFiltro}`);
+
+    if (liEstadoActual != liEstadoAnterior) {
+        if (liEstadoAnterior) {
+            liEstadoAnterior.style.backgroundColor = "white";
+        };
+        liEstadoActual.style.backgroundColor = "#f0f0f0";
+        filtro.dataset.estado = `${idEstado}`;
+        filtro.dataset.prestado = "false";
+        fetchProductos(idTabla, query, idEstado, categoriaFiltro)
+    } else {
+        liEstadoActual.style.backgroundColor = "white";
+        filtro.dataset.estado = '';
+        fetchProductos(idTabla, query, "", categoriaFiltro)
+    }
+
+}

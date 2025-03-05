@@ -1,0 +1,63 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/socios.css' %}" type="text/css"/>
+    <title>Gestión de Socios</title>
+</head>
+<body class="body">
+    <p style="color: white;">Cargar Nuevo Socio: </p>
+    <form id="socios-form">
+    <!-- <input type="hidden" id="id" name="id"> -->
+        <input type="text" id="Nombre_Completo" name="Nombre_Completo" placeholder="Nombre Completo" required>
+        <input type="number" id="Documento" name="Documento" placeholder="Documento" required><br>
+        <input type="number" id="Telefono" name="Telefono" placeholder="Teléfono" required> 
+        <input type="text" id="Domicilio" name="Domicilio" placeholder="Domicilio" required>
+        <button type="submit" id="enviar">Agregar Socio</button>
+        <button type="button" onclick="resetForm()" id="cancelar" style="display: none;">Cancelar</button>
+    </form>
+    <div class="mensaje">
+        <p>Si faltan las cuotas del año actual de algún socio, haga click en el siguiente botón. Si esto no soluciona el problema, verifique si el socio está cargado en el sistema en la sección de personas y si está cargado como socio.
+            <button type="button" onclick="cargarCuotas()" style="margin-left: 5px;">Cargar Cuotas</button>
+        </p>
+    </div>
+    <label for="filtrar-cuotas" style="color: white;">Filtrar Cuotas:</label> <br>
+    <div class="filtros-container">
+        <input type="text" id="filtrar-cuotas" placeholder="Buscar por nombre o DNI del socio..." onkeyup="filtrar()">
+        <p style="color: white;">Visualizar: </p>
+        <p id="visualizar" onclick="visualizar()" data-valor="false" style="color: red; font-weight: bold; cursor: pointer;">Años Impagos</p>
+    </div>
+    <!-- Tabla para mostrar los socios -->
+    <table id="socios-list" border="2">
+        <thead>
+            <tr>
+                <th rowspan="2">Nombre</th>
+                <th rowspan="2">DNI</th>
+                <th rowspan="2">Teléfono</th>
+                <th rowspan="2">Dirección</th>
+                <th rowspan="2">Año</th>
+                <th colspan="7" style="text-align: center;">Cuotas</th> <!-- Encabezado general para cuotas -->
+            </tr>
+            <tr>
+                <th>Cuota 1</th>
+                <th>Cuota 2</th>
+                <th>Cuota 3</th>
+                <th>Cuota 4</th>
+                <th>Cuota 5</th>
+                <th>Cuota 6</th>
+            </tr>
+        </thead>
+        <tbody id="socio-list-body">
+            <!-- Los socios se insertarán aquí -->
+        </tbody>
+    </table>
+
+    <script src="{% static 'scripts/socios.js' %}"></script>
+</body>
+</html>
+{% endblock %}

@@ -8,19 +8,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/socios.css' %}" type="text/css"/>
-    <title>Gestión de Socios</title>
+    <title>Gestión de Personas</title>
 </head>
 <body class="body">
     <form id="socios-form">
     <!-- <input type="hidden" id="id" name="id"> -->
         <input type="text" id="Nombre_Completo" name="Nombre_Completo" placeholder="Nombre Completo" required>
-        <input type="number" id="Documento" name="Documento" placeholder="Documento" required><br>
+        <input type="number" id="Documento" name="Documento" placeholder="Documento" required>
+        <select id="Asociado" name="Asociado">
+            <option value="">Seleccione una opción</option>
+            <option value="false">No Socio</option>
+            <option value="true">Socio</option>
+        </select>
+        <br>
         <input type="number" id="Telefono" name="Telefono" placeholder="Teléfono" required> 
         <input type="text" id="Domicilio" name="Domicilio" placeholder="Domicilio" required>
-        <button type="submit" id="enviar">Agregar Socio</button>
+        <button type="submit" id="enviar">Agregar Persona</button>
         <button type="button" onclick="resetForm()" id="cancelar" style="display: none;">Cancelar</button>
     </form>
-
+    <label for="buscar-personas" style="color: white;">Buscar Persona:</label> <br>
+    <div class="filtros-container">
+        <input type="text" id="buscar-personas" placeholder="Buscar por nombre o DNI de la persona..." onkeyup="buscarPersonas()">
+        <p style="color: white;">Solo Socios?: </p>
+        <p id="solo-socios" onclick="soloSocios()" data-valor="" style="color: lightblue; font-weight: bold; cursor: pointer;">Socios y No Socios</p>
+    </div>
     <!-- Tabla para mostrar los socios -->
     <table id="socios-list" border="2">
         <thead>
@@ -29,6 +40,7 @@
                 <th>DNI</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
+                <th>Es Socio?</th>
                 <th>Acciones</th>
             </tr>
         </thead>

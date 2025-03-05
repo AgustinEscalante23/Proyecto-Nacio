@@ -49,6 +49,16 @@ input[type="text"], input[type="number"] {
     justify-content: space-around;
 }
 
+select {
+    width: 20%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #6367c1;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-flex;
+    justify-content: space-around;
+}
 .buttonA {
     background-color: #484F73;
     color: white;
@@ -77,5 +87,17 @@ form {
     margin: 20px 0;
 }
 
+.mensaje {
+    display: grid;
+    place-items: center;
+    padding-left: 15px;
+    background-color: #97A4D0; 
+    border: 1px solid #182240;
+    margin-bottom: 20px;
+}
 
+.filtros-container {
+    display: flex;
+    gap: 10px;
+}
 

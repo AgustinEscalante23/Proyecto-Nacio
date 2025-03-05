@@ -11,7 +11,17 @@ class CategoriaSerializer(serializers.ModelSerializer):
         model = Categoria
         fields = '__all__'
 
+class ProductoReadSerializer(serializers.ModelSerializer):
+    categoria = CategoriaSerializer(read_only=True)
+    estado = EstadoSerializer(read_only=True)
+
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
 class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = '__all__'
+
+    codigo = serializers.CharField(required=False, read_only=True)  # No editable por el usuario
