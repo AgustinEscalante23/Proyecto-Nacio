@@ -208,21 +208,20 @@ document.getElementById("prestamos-form").addEventListener('submit', async (even
 });
 
 function editarPrestamo(prestamo) {
-    console.log(prestamo);
+    console.log(prestamo)
     let modal = document.getElementById("formulario");
     seleccionarSocio(prestamo.prestatario);
 
     for (let producto of prestamo.productos) {
         seleccionarProducto(producto);
         cambiarEstadoProducto(producto.id, false);
-        productosPrestamosEditados.push(producto.id);
-    }
+        productosPrestamosEditados.push(producto.id)
+    };
 
     document.getElementById("duracion").value = prestamo.duracion;
     document.getElementById("fecha_extraccion").value = prestamo.fecha_extraccion;
-    document.getElementById("cancelar").classList.add("btn-cancel"); // Agregar clase CSS
+    document.getElementById("cancelar").style.display = "inline";
     document.getElementById("enviar").textContent = "Actualizar Prestamo";
-    document.getElementById("enviar").classList.add("btn-update"); // Agregar clase CSS
 
     let hiddenInput = document.getElementById("id-prestamo");
     if (!hiddenInput) {
@@ -231,15 +230,13 @@ function editarPrestamo(prestamo) {
         hiddenInput.id = "id-prestamo";
         hiddenInput.name = "id";
         hiddenInput.value = prestamo.id;
-        hiddenInput.classList.add("hidden-input"); // Agregar clase CSS
-        document.getElementById("prestamos-form").appendChild(hiddenInput);
+        document.getElementById("prestamos-form").appendChild(hiddenInput)
     } else {
         hiddenInput.value = prestamo.id;
     }
 
-    modal.classList.add("modal-show"); // Agregar clase CSS
     modal.style.display = "block";
-}
+};
 
 
 function finalizarPrestamo(prestamo) {
