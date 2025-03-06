@@ -10,37 +10,37 @@
     <nav class="navbar">
       <ul>
         {% if user.is_authenticated %}
-        <li>
-          <a href="/homepage">Inicio</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/homepage/' %}active{% endif %}" href="/homepage">Inicio</a>
         </li>
-        <li>
-          <a href="/inscripciones">inscripciones</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/inscripciones/' %}active{% endif %}" href="/inscripciones">Inscripciones</a>
         </li>
-        <li>
-          <a href="/calendario">calendario</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/calendario/' %}active{% endif %}" href="/calendario">Calendario</a>
         </li>
-        <li>
-          <a href="/materias">Materias</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/materias/' %}active{% endif %}" href="/materias">Materias</a>
         </li>
-        <li>
-          <a href="/logout">Cerrar Sesion</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/logout/' %}active{% endif %}" href="/logout">Cerrar Sesión</a>
         </li>
         {% else %}
-        <li>
-          <a href="/producto">Inventario</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/producto/' %}active{% endif %}" href="/producto">Inventario</a>
         </li>
-        <li>
-          <a href="/prestamos">Prestamos</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/prestamos/' %}active{% endif %}" href="/prestamos">Préstamos</a>
         </li>
-        <li>
-            <a href="/personas">Personas</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/personas/' %}active{% endif %}" href="/personas">Personas</a>
         </li>
-        <li>
-          <a href="/socios">Socios</a>
+        <li class="navbar-item">
+          <a class="navbar-link {% if request.path == '/socios/' %}active{% endif %}" href="/socios">Socios</a>
         </li>
         {% endif %}
       </ul>
-    </nav>
+    </nav>    
     <main class="container">
       {% block content %} {% endblock %}
     </main>

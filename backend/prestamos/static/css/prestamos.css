@@ -1,5 +1,5 @@
- /* Estilos del modal */
- .modal {
+/* Estilos del modal */
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -17,7 +17,7 @@
     padding: 20px;
     border-radius: 10px;
     width: 80%;
-    text-align:start;
+    text-align: start;
 }
 
 .close {
@@ -35,10 +35,12 @@
     position: absolute;
     background: white;
 }
+
 #listaSocios li {
     padding: 10px;
     cursor: pointer;
 }
+
 #listaSocios li:hover {
     background-color: #f0f0f0;
 }
@@ -50,10 +52,12 @@
     max-width: 300px;
     background: white;
 }
+
 .lista-productos li {
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-productos li:hover {
     background-color: #f0f0f0;
 }
@@ -66,7 +70,6 @@
 }
 
 /* Estilos para la sección principal */
-
 * {
     margin: 0;
     padding: 0;
@@ -75,14 +78,17 @@
 
 .container {
     display: flex;
-    height: 100vh; /* O ajusta según la necesidad */
+    height: 100vh;
 }
 
 .left {
-    width: 30%; /* Sección izquierda más pequeña */
-    background-color: lightblue;
+    width: 30%;
+    background-color:#484F73;
     padding: 20px;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Habilitar desplazamiento vertical */
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
@@ -91,61 +97,85 @@
     display: none; /* Chrome, Safari */
 }
 
+#buscar-prestamos {
+    border: none; /* Quitar los bordes */
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    padding: 10px; /* Añadir un poco de relleno para mejorar la apariencia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave para dar algo de profundidad */
+    margin-bottom: 20px; /* Añadir un poco de espacio entre el campo de búsqueda y la lista de préstamos */
+    width: 100%; /* Hacer que el campo de búsqueda ocupe todo el ancho */
+    max-width: 300px; /* Limitar el ancho máximo */
+}
+
 .right {
-    width: 70%; /* Sección derecha más grande */
+    width: 70%;
     display: flex;
-    flex-direction: column; /* Dividir en dos partes iguales */
+    flex-direction: column;
 }
 
 .top, .bottom {
-    flex: 1; /* Ambas partes toman el mismo espacio */
+    flex: 1;
     padding: 20px;
 }
 
 .top {
     display: flex;
-    background-color: lightcoral;
+    background-color: #97A4D0;
+    max-height: 30%;
 }
 
 .bottom {
     display: flex;
-    background-color: lightgreen;
-    height: 50%;
+    background-color: #97A4D0;
+    max-height: 70%;
     flex-direction: row;
 }
 
-/* estilos para la lista de prestamos*/
+/* estilos para la lista de prestamos */
 .lista-prestamos {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
-    max-width: 300px;
-    background: white;
+    max-width: 100%; /* Ajustar el ancho de la lista */
+    color: #D9D9D9;
+    overflow-y: scroll;
+    height: calc(100vh - 80px); /* Ajustar la altura para que ocupe el resto del espacio */
 }
+
+.lista-prestamos::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
 .lista-prestamos li {
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-prestamos li:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(72, 79, 115, 0.2); /* Ajustar el color de fondo al pasar el ratón */
 }
 
-/*estilos para el detalle*/
+/* estilos para el detalle */
 .detalle-container {
     background: white;
     display: flex;
     padding: 20px;
-    overflow-y: scroll;
+    overflow-y: auto; /* Habilitar desplazamiento vertical */
     height: 100%;
     width: 70%;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+}
+
+.detalle-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
 }
 
 .lista-detalle {
     list-style: none;
     padding: 0;
-    max-width: 70%;
+    max-width: 100%; /* Ajustar el ancho de la lista */
     background: white;
 }
+
 .lista-detalle li {
     padding: 10px;
 }
@@ -157,6 +187,7 @@
     display: flex;
     gap: 15px;
 }
+
 .detalle-productos li {
     padding: 10px;
 }
@@ -171,24 +202,28 @@
     gap: 20px;
 }
 
-/* estilos para la lista de vencimientos próximos*/
+/* estilos para la lista de vencimientos próximos */
 .lista-vencimientos {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
     width: 100%;
-    background: white;
+    background: #182240;
     display: flex;
     gap: 15px;
     overflow-y: scroll;
-    
+    overflow: hidden;
+    color: #FFFFFF;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
+
 .lista-vencimientos li {
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-vencimientos li:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(72, 79, 115, 0.2);
 }
 
 #fechas-proximas {
@@ -201,16 +236,69 @@
 
 .titulo-vencimientos {
     text-align: center;
+    background: #182240;
+    color: #D9D9D9;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /* finalizados */
-
 .lista-finalizados {
     list-style: none;
     padding: 0;
-    max-width: 70%;
+    max-width: 100%;
     background: white;
 }
+
 .lista-finalizados li {
     padding: 10px;
+}
+
+/* estilos.css */
+
+/* Estilo para los botones */
+.btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #c0392b;
+}
+
+.btn-update {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-update:hover {
+    background-color: #27ae60;
+}
+
+/* Estilo para el input oculto */
+.hidden-input {
+    display: none;
+}
+
+/* Estilo para mostrar el modal */
+.modal-show {
+    display: block !important;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
