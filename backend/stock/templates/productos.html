@@ -16,7 +16,9 @@
 </head>
 
 <body class="body">
-    <div>
+ <div class="todo">
+    <div id="tablas-container" class="tablas-container"></div>
+    <div id="div-form-detalle">
         <form id="stock-form">
             <div>
                 <label for="nombre">Nombre</label> <br>
@@ -40,18 +42,16 @@
             </div>
             <div>
                 <label for="descripcion">Descripción</label> <br>
-                <input type="text" id="descripcion" placeholder="Descripción">
+                <textarea id="descripcion" placeholder="Descripción" rows="6" maxlength="300"></textarea>
             </div>
             <!-- Botón de agregar inventario al final del formulario -->
             <button type="submit" id="submit-btn" class="button">Agregar Inventario</button>
             <button onclick="resetForm()" id="cancel-btn" class="cancel-button" style="display: none;">Cancelar</button>
         </form>
         <button class="button" onclick="window.location.href='{% url 'estado' %}'">Estados</button>
-    <button class="button" onclick="window.location.href='{% url 'categoria' %}'">Categorias</button>
+        <button class="button" onclick="window.location.href='{% url 'categoria' %}'">Categorias</button>
     </div>
-    <br>
-    <div id="tablas-container" class="tablas-container">
-    </div>
+ </div>
     <script src="{% static 'scripts/producto.js' %}"></script> <!-- Asegúrate de que la ruta sea correcta -->
 </body>
 

@@ -2,22 +2,34 @@ body {
     font-family: Arial, sans-serif;
     background-color: #97A4D0; /* Ajuste para un color similar al de la imagen */
     margin: 0; /* Eliminar márgenes predeterminados */
-    padding: 20px; /* Agregar un padding al cuerpo */
+    padding-top: 10px; /* Agregar un padding al cuerpo */
+    overflow: hidden; /* Evita el scroll en el body */
 }
+
+.todo {
+    display: flex;
+    margin-top: 10px;
+    padding: 0;
+    gap: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow: hidden; /* Evita el scroll en el body */
+    max-height: 85vh; /* Define la altura máxima */
+}
+
 h2 {
     color:#182240
 }
-#div-form {
-    background-color: #2D3073;
-    padding: 20px; /* Agregar padding para que el contenido no esté pegado a los bordes */
-    max-width: 600px; /* Establecer un ancho máximo si es necesario */
-    margin: auto; /* Centrar el contenedor */
+
+#div-form-detalle {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 table {
-    width: 100%;
+    width: auto;
     border-collapse: collapse;
-    margin: 20px 0;
     font-size: 16px;
     background-color: #7182B9; /* Color de fondo de la tabla */
 }
@@ -94,10 +106,11 @@ button:hover {
 }
 
 form {
+    width: auto;
     background-color: #D9D9D9;
     border-radius: 10px;
     padding: 20px 10px;
-    margin: 20px 10px;
+    margin: 5px 5px;
     display: flex; /* Usar flexbox para el formulario */
     flex-direction: column; /* Colocar los elementos en columna */
 }
@@ -109,7 +122,7 @@ label {
     font-weight: bold; /* Opcional: hace que el texto sea negrita */
 }
 
-input[type="text"], input[type="number"], select {
+input[type="text"], input[type="number"], select, textarea {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -122,10 +135,48 @@ input[type="text"], input[type="number"], select {
     background-color: #C0C0C0;
 }
 
+textarea {
+    resize: none; /* Evita que el usuario cambie el tamaño */
+    font-family: Arial, sans-serif;
+}
+/* Ancho de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 8px;  /* Para scroll vertical */
+    height: 8px; /* Para scroll horizontal */
+}
+
+/* Estilo del fondo de la barra (sin color de fondo) */
+::-webkit-scrollbar-track {
+    background: transparent; /* Fondo transparente */
+}
+
+/* Estilo de la barra en sí (thumb) */
+::-webkit-scrollbar-thumb {
+    background-color: #182240; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid transparent; /* Sin borde visible */
+}
+
+/* Cambia el color de la barra cuando el mouse pasa sobre ella */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(24, 34, 64, 0.7); /* Leve transparencia al pasar el mouse */
+}
+
+/* Estilo de las flechas del scroll (en navegadores que las muestran) */
+::-webkit-scrollbar-button {
+    background-color: #182240; /* Color de las flechas */
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin; /* Barra más delgada */
+    scrollbar-color: #182240 transparent; /* Color de la barra y el fondo */
+}
+
 /* Estilo para la fila de Estado y Categoría */
 .row-select {
     display: flex; /* Usar flexbox para alinear Estado y Categoría */
-    justify-content: space-between; /* Espacio entre los selectores */
+    flex-direction: column;
 }
 
 .row-select > div {
@@ -138,12 +189,23 @@ input[type="text"], input[type="number"], select {
 }
 
 /* estilos para las tablas */
-.contenedor {
+.tablas-container {
+    padding-right: 10px;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    border: 1px solid #ccc;
+    gap: 20px;
+    width: 63%;
+    max-height: 100vh; /* Define la altura máxima */
+    overflow-y: auto; /* Solo este contenedor tendrá scroll vertical */
+}
+
+.contenedor {
+    padding: 5px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    border: 1px solid #ccc;
     background: white;
 }
 
@@ -162,20 +224,21 @@ input[type="text"], input[type="number"], select {
 }
 
 .tabla-contenedor {
-    max-height: 0;
-    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
     transition: max-height 0.3s ease-out;
 }
 
 .tabla-contenedor.mostrar {
-    max-height: 500px; /* Ajusta según el contenido */
+    display: flex;
 }
 
 .lista-estados {
     margin: 0%;
     flex-wrap: wrap; /* Permite que los elementos se acomoden en varias líneas */
     list-style-type: disc;
-    border: 1px solid #ccc;
     width: auto;
     background: white;
     display: flex;
@@ -195,6 +258,7 @@ input[type="text"], input[type="number"], select {
 }
 
 .encabezado {
+    color: white;
     display: flex;
     background-color: #2D3073;
     width: auto;

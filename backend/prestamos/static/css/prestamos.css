@@ -1,5 +1,5 @@
- /* Estilos del modal */
- .modal {
+/* Estilos del modal */
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -8,7 +8,8 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .modal-content {
@@ -17,7 +18,7 @@
     padding: 20px;
     border-radius: 10px;
     width: 80%;
-    text-align:start;
+    text-align: start;
 }
 
 .close {
@@ -30,15 +31,16 @@
 #listaSocios {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
-    max-width: 300px;
-    position: absolute;
+    max-width: 50%;
     background: white;
 }
+
 #listaSocios li {
     padding: 10px;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
+
 #listaSocios li:hover {
     background-color: #f0f0f0;
 }
@@ -46,43 +48,63 @@
 .lista-productos {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
-    max-width: 300px;
+    max-width:100%;
     background: white;
 }
+
 .lista-productos li {
+    border: 1px solid #ccc;
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-productos li:hover {
     background-color: #f0f0f0;
 }
 
 .lista-dobles-container {
-    display: inline-flex;
-    flex-direction: column;
-    width: 40%;
-    padding-right: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.lista-dobles-container div {
+    flex: 1;
+}
+
+.lista-dobles-container input {
+    width: 100%;
 }
 
 /* Estilos para la sección principal */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin-top: 30px;
+    background-color: #182240;
+    overflow: hidden;
 }
 
 .container {
     display: flex;
-    height: 100vh; /* O ajusta según la necesidad */
+    height: calc(100vh - 55px); /* Resta la altura de la navbar */
+    overflow-y: auto;
 }
 
 .left {
-    width: 30%; /* Sección izquierda más pequeña */
-    background-color: lightblue;
+    width: 30%;
+    background-color:#484F73;
     padding: 20px;
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto; /* Habilitar desplazamiento vertical */
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
@@ -91,61 +113,103 @@
     display: none; /* Chrome, Safari */
 }
 
+#buscar-prestamos {
+    border: none; /* Quitar los bordes */
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    padding: 10px; /* Añadir un poco de relleno para mejorar la apariencia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave para dar algo de profundidad */
+    margin-bottom: 20px; /* Añadir un poco de espacio entre el campo de búsqueda y la lista de préstamos */
+    width: 100%; /* Hacer que el campo de búsqueda ocupe todo el ancho */
+    max-width: 300px; /* Limitar el ancho máximo */
+}
+
 .right {
-    width: 70%; /* Sección derecha más grande */
+    width: 70%;
     display: flex;
-    flex-direction: column; /* Dividir en dos partes iguales */
+    flex-direction: column;
 }
 
 .top, .bottom {
-    flex: 1; /* Ambas partes toman el mismo espacio */
+    flex: 1;
     padding: 20px;
 }
 
 .top {
     display: flex;
-    background-color: lightcoral;
+    background-color: #97A4D0;
+    max-height: 30%;
 }
 
 .bottom {
     display: flex;
-    background-color: lightgreen;
-    height: 50%;
+    background-color: #97A4D0;
+    max-height: 70%;
     flex-direction: row;
 }
 
-/* estilos para la lista de prestamos*/
+/* estilos para la lista de prestamos */
 .lista-prestamos {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
-    max-width: 300px;
-    background: white;
+    max-width: 100%; /* Ajustar el ancho de la lista */
+    color: #D9D9D9;
+    overflow-y: scroll;
+    padding-right: 20px;
+    height: calc(100vh - 80px); /* Ajustar la altura para que ocupe el resto del espacio */
 }
+
+.lista-prestamos::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
 .lista-prestamos li {
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-prestamos li:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(72, 79, 115, 0.2); /* Ajustar el color de fondo al pasar el ratón */
 }
 
-/*estilos para el detalle*/
+/* estilos para el detalle */
+#detalle-prestamo {
+    justify-content: space-between;
+}
 .detalle-container {
     background: white;
     display: flex;
-    padding: 20px;
-    overflow-y: scroll;
+    flex-direction: column;
+    overflow-y: auto; /* Habilitar desplazamiento vertical */
     height: 100%;
     width: 70%;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+}
+
+.detalle-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.encabezado {
+    color: white;
+    display: flex;
+    background-color: #2D3073;
+    width: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 30px;
+    margin-bottom: 0%;
 }
 
 .lista-detalle {
+    align-content: center;
     list-style: none;
     padding: 0;
-    max-width: 70%;
+    min-width: 40%;
     background: white;
 }
+
 .lista-detalle li {
     padding: 10px;
 }
@@ -157,6 +221,7 @@
     display: flex;
     gap: 15px;
 }
+
 .detalle-productos li {
     padding: 10px;
 }
@@ -169,26 +234,36 @@
     flex-direction: column;
     flex-grow: 1;
     gap: 20px;
+    max-width: 30%;
+    margin: 20px;
 }
 
-/* estilos para la lista de vencimientos próximos*/
+.button-container button {
+    width: 100%;
+}
+
+/* estilos para la lista de vencimientos próximos */
 .lista-vencimientos {
     list-style: none;
     padding: 0;
-    border: 1px solid #ccc;
     width: 100%;
-    background: white;
+    background: #182240;
     display: flex;
     gap: 15px;
     overflow-y: scroll;
-    
+    overflow: hidden;
+    color: #FFFFFF;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
+
 .lista-vencimientos li {
     padding: 10px;
     cursor: pointer;
 }
+
 .lista-vencimientos li:hover {
-    background-color: #f0f0f0;
+    background-color: rgba(72, 79, 115, 0.2);
 }
 
 #fechas-proximas {
@@ -201,16 +276,118 @@
 
 .titulo-vencimientos {
     text-align: center;
+    background: #182240;
+    color: #D9D9D9;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /* finalizados */
-
 .lista-finalizados {
     list-style: none;
     padding: 0;
-    max-width: 70%;
+    max-width: 100%;
     background: white;
 }
+
 .lista-finalizados li {
     padding: 10px;
+}
+
+#buscar-finalizados {
+    border: 1px solid gray ; /* Quitar los bordes */
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    padding: 10px; /* Añadir un poco de relleno para mejorar la apariencia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave para dar algo de profundidad */
+    margin-bottom: 20px; /* Añadir un poco de espacio entre el campo de búsqueda y la lista de préstamos */
+    width: 100%; /* Hacer que el campo de búsqueda ocupe todo el ancho */
+    max-width: 50%; /* Limitar el ancho máximo */
+}
+
+button {
+    background-color: #182240;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #7074cc; /* Color de fondo al pasar el mouse */
+}
+
+/* Ancho de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 8px;  /* Para scroll vertical */
+    height: 8px; /* Para scroll horizontal */
+}
+
+/* Estilo del fondo de la barra (sin color de fondo) */
+::-webkit-scrollbar-track {
+    background: transparent; /* Fondo transparente */
+}
+
+/* Estilo de la barra en sí (thumb) */
+::-webkit-scrollbar-thumb {
+    background-color: #182240; /* Color de la barra */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid transparent; /* Sin borde visible */
+}
+
+/* Cambia el color de la barra cuando el mouse pasa sobre ella */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(24, 34, 64, 0.7); /* Leve transparencia al pasar el mouse */
+}
+
+/* Estilo de las flechas del scroll (en navegadores que las muestran) */
+::-webkit-scrollbar-button {
+    background-color: #182240; /* Color de las flechas */
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin; /* Barra más delgada */
+    scrollbar-color: #182240 transparent; /* Color de la barra y el fondo */
+}
+
+/* estilos formulario */
+form {
+    width: auto;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    padding: 20px 10px;
+    margin: 5px 5px;
+    display: flex; /* Usar flexbox para el formulario */
+    flex-direction: column; /* Colocar los elementos en columna */
+}
+
+label, span {
+    margin-bottom: 5px; 
+    margin-right: 20px;/* Espacio entre la etiqueta y el campo de entrada */
+    color: #182240; /* Cambia este valor al color que desees */
+    font-weight: bold; /* Opcional: hace que el texto sea negrita */
+}
+
+input[type="text"], input[type="number"], input[type="date"],  select, textarea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 50%;
+    max-width: 100%; 
+    padding: 15px; /* Aumentar el padding para mayor altura */
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    border: 1px; /* Asegurar que el borde sea consistente */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre los campos */
+    background-color: #C0C0C0;
+}
+
+#cancelar {
+    background-color: #ff0000;
+}
+#cancelar:hover{
+    background-color: #cc0000;
 }

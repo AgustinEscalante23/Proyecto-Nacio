@@ -21,6 +21,8 @@ document.getElementById('status-form').addEventListener('submit', async function
     .then(data => {
         console.log('Estado creado:', data);
         fetchEstados(); // Actualizar la lista de estados después de agregar
+        document.getElementById('status-form').reset()
+        
     })
     .catch((error) => {
         console.error('Error:', error);

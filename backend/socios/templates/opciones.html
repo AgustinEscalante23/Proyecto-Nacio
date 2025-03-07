@@ -1,0 +1,31 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/opciones.css' %}" type="text/css"/>
+    <title>Opciones</title>
+</head>
+<body class="body">
+    <table>
+        <tr>
+            <td><button type="button" onclick="backup()">Hacer Copia de Seguridad / Restaurar Datos</button></td>
+            <td>Esta opción permite realizar una copia de seguridad de todos los datos (Productos, Socios, Prestamos, etc.) de la App. 
+                También nos permite restaurar los datos en caso de pérdida mediante una Copia de Seguridad anterior</td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="cargarCuotas()">Cargar cuotas</button></td>
+            <td>Esta opción permite realizar la carga de las cuotas del Año actual para todos los socios ha los que no les aparezcan.
+                Esta opción debe usarse al inicio de cada año para que se creen y cargen las cuotas del nuevo año de todos los socios
+            </td>
+        </tr>
+    </table>
+
+    <script src="{% static 'scripts/opciones.js' %}"></script>
+</body>
+</html>
+{% endblock %}

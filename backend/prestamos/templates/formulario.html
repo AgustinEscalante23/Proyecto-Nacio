@@ -5,19 +5,21 @@
             <div>
                 <label for="prestatario">Prestatario:</label> <br>
                 <input type="hidden" id="prestatario">
-                <input type="text" id="buscar-socio" placeholder="Ingresa nombre o dni..." onkeyup="buscarSocio()">
+                <input type="text" id="buscar-socio" placeholder="Ingresa nombre o dni..." onkeyup="buscarSocio()" autocomplete="off">
                 <ul id="listaSocios"></ul>
             </div>
             <br>
             <div class="lista-dobles-container">
-                <label>Productos:</label> <br>
-                <input type="text" id="buscar-productos" placeholder="Ingresa nombre o código del artículo...." onkeyup="buscarProductos()">
-                <ul id="listaProductos" class="lista-productos"></ul>
+                <div>
+                    <label>Productos:</label> <br>
+                    <input type="text" id="buscar-productos" placeholder="Ingresa nombre o código del artículo...." onkeyup="buscarProductos()" autocomplete="off">
+                    <ul id="listaProductos" class="lista-productos"></ul>
+                </div>
+                <div>
+                    <span>Artículos seleccionados:</span>
+                    <ul id="listaProductosSeleccionados" class="lista-productos"></ul>
+                </div>
             </div>
-            <div class="lista-dobles-container">
-                <p>Artículos seleccionados</p>
-                <ul id="listaProductosSeleccionados" class="lista-productos"></ul>
-            </div> <br>
             <div>
                 <label for="duracion">Duración en meses del prestamo: </label> <br>
                 <input type="number" id="duracion">
@@ -26,8 +28,10 @@
                 <label for="fecha_extraccion">Fecha de Extracción: </label> <br>
                 <input type="date" id="fecha_extraccion">
             </div><br>
-            <button type="submit" id="enviar">Registrar prestamo</button>
-            <button type="button" onclick="resetForm()" id="cancelar" style="display: none;">Cancelar</button>
+            <div style="display: flex; gap: 30px; width: 100%;" >
+                <button type="button" onclick="resetForm()" id="cancelar" style="display: none;">Cancelar</button>
+                <button type="submit" id="enviar">Registrar prestamo</button>
+            </div>
         </form>
     </div>
 </div>

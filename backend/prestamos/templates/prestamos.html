@@ -1,7 +1,11 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpic</title>
@@ -25,12 +29,15 @@
             </div>
             <div class="bottom">
                 <div id="detalle-prestamo" class="detalle-container">
-                    <ul id="lista-detalle" class="lista-detalle"></ul>
-                    <div id="button-container" class="button-container"></div>
+                    <p id="encabezado" class="encabezado"></p>
+                    <div style="display: flex; justify-content: space-between; padding: 30px;">
+                        <ul id="lista-detalle" class="lista-detalle"></ul>
+                        <div id="button-container" class="button-container"></div>
+                    </div>
                 </div>
                 <div class="button-container">
                     <button id="abrirformulario" onclick="abrir('formulario')" >Crear Nuevo Préstamo</button>
-                    <button onclick="fetchPrestamosFinalizados()">Ver Préstamos Finalizados</button>
+                    <button onclick="fetchPrestamosFinalizados('')">Ver Préstamos Finalizados</button>
                 </div>
             </div>
         </div>
@@ -38,6 +45,7 @@
     <div id="prestamos-finalizados" class="modal">
         <div class="modal-content">
             <span onclick="cerrar('prestamos-finalizados')" class="close">&times;</span>
+            <input id="buscar-finalizados" placeholder="Ingresar nombre o documento del prestatario..." onkeyup="buscarPrestamosFinalizados()">
             <ul id="lista-finalizados" class="lista-finalizados"></ul>
         </div>
     </div>
@@ -47,3 +55,4 @@
     <script src="{% static 'scripts/prestamos.js' %}"></script>
 </body>
 </html>
+{% endblock %}

@@ -9,6 +9,11 @@
   <body>
     <nav class="navbar">
       <ul>
+        <li>
+          <a href="/" class="logo">
+            <img src="{% static 'images/logo_alpic.png' %}" alt="Logo">
+          </a>
+        </li>
         {% if user.is_authenticated %}
         <li>
           <a href="/homepage">Inicio</a>
@@ -38,10 +43,13 @@
         <li>
           <a href="/socios">Socios</a>
         </li>
+        <li>
+          <a href="/opciones">Opciones</a>
+        </li>
         {% endif %}
       </ul>
     </nav>
-    <main class="container">
+    <main>
       {% block content %} {% endblock %}
     </main>
   </body>

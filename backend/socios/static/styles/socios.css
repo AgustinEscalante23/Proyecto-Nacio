@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #2D3073; /* Ajuste para un color similar al de la imagen */
+    overflow-x: hidden;
 }
 
 #div-form {

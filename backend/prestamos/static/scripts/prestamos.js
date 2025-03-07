@@ -92,7 +92,7 @@ function buscarProductos() {
                 item.innerHTML = `
                 ${producto.nombre} <br>
                 Código: ${producto.codigo} <br>
-                Estado: ${producto.estado.nombre} <br>
+                Estado: ${producto.estado? producto.estado.nombre : "Sin Estado"} <br>
                 Descripción: ${producto.descripcion}`;
                 item.onclick = function() { seleccionarProducto(producto); };
                 lista.appendChild(item);
@@ -358,6 +358,8 @@ async function buscarPrestamos(){
 async function detallePrestamo (prestamo) {
     
     let detalleList = document.getElementById('lista-detalle');
+    let encabezado = document.getElementById('encabezado');
+    encabezado.textContent = prestamo.prestatario.Nombre_Completo;
 
     detalleList.innerHTML = "";
     detalleList.innerHTML = `
@@ -452,10 +454,10 @@ async function buscarVencimientosProximos() {
     }
 }
 
-async function fetchPrestamosFinalizados() {
+async function fetchPrestamosFinalizados(query) {
     abrir('prestamos-finalizados');
     try {
-        const response = await fetch('http://localhost:8000/api/prestamos/?estado=true');
+        const response = await fetch(`http://localhost:8000/api/prestamos/?estado=true&q=${query}`);
         const data = await response.json();
 
         let lista = document.getElementById("lista-finalizados");
@@ -495,6 +497,21 @@ async function fetchPrestamosFinalizados() {
     } catch (error) {
         console.error("Error en la búsqueda:", error);
     }
+}
+
+let timeoutFinalizados = null;
+async function buscarPrestamosFinalizados(params) {
+    let query = document.getElementById("buscar-finalizados").value.trim();
+
+    clearTimeout(timeoutFinalizados);
+    if (query.length < 1) {
+        await fetchPrestamosFinalizados("")
+        return;
+    }
+
+    timeoutFinalizados = setTimeout(() => {
+        fetchPrestamosFinalizados(query);
+}, 300);
 }
 
 async function cambiarEstadoProducto(id, estado) {

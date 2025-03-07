@@ -15,6 +15,7 @@ document.getElementById('category-form').addEventListener('submit', function(eve
     .then(data => {
         console.log('Categoria creada:', data);
         fetchCategoria(); // Actualizar la lista de Categorias después de agregar
+        document.getElementById('category-form').reset();
     })
     .catch((error) => {
         console.error('Error:', error);

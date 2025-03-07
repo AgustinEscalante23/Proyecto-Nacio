@@ -27,13 +27,21 @@ class ProductoViewSet(viewsets.ModelViewSet):
             )
 
         if estado_id and estado_id.isdigit():
-            productosBuscados = productosBuscados.filter(estado__id=int(estado_id))
+            if int(estado_id) != 0:
+                productosBuscados = productosBuscados.filter(estado__id=int(estado_id))
+            else:
+                productosBuscados = productosBuscados.filter(estado__isnull=True)
 
         if categoria_id and categoria_id.isdigit():
-            productosBuscados = productosBuscados.filter(categoria__id=int(categoria_id))
+            if int(categoria_id) != 0:
+                productosBuscados = productosBuscados.filter(categoria__id=int(categoria_id))
+            else:
+                productosBuscados = productosBuscados.filter(categoria__isnull=True)
 
         if prestado_filtro in ["true", "false"]:
             productosBuscados = productosBuscados.filter(prestado=(prestado_filtro == "true"))
+            productosBuscados = productosBuscados.order_by('estado')
+            return productosBuscados.distinct()
 
         return productosBuscados.distinct()
     

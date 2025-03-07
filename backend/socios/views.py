@@ -8,6 +8,9 @@ from .serializers import SociosSerializer, CuotasWriteSerializer, CuotasReadSeri
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+def opciones(request):
+    return render(request, 'opciones.html')
+
 def index(request):
     return render(request, 'index.html')
 
