@@ -1,4 +1,3 @@
-
 var modals = document.querySelectorAll(".modal"); // Todos los modales
 var productosPrestamosEditados = [];
 
@@ -306,6 +305,11 @@ function resetForm() {
     if (enviarBtn) enviarBtn.textContent = "Registrar prestamo";
 }
 
+function formatearFecha(fecha) {
+    const [anio, mes, dia] = fecha.split('-');
+    return `${dia}/${mes}/${anio}`;
+}
+
 const fetchPrestamos = async (q, estado, fecha) => {
     try {
         const response = await fetch(`http://localhost:8000/api/prestamos/?q=${q}&estado=${estado}&fecha=${fecha}`);
@@ -325,7 +329,7 @@ const fetchPrestamos = async (q, estado, fecha) => {
             item.innerHTML = `Préstamo N° ${prestamo.id} <br> 
                               ${prestamo.prestatario.Nombre_Completo} <br> 
                               ${prestamo.prestatario.Documento} <br> 
-                              Fecha de Devolución: ${prestamo.fecha_devolucion}`;
+                              Fecha de Devolución: ${formatearFecha(prestamo.fecha_devolucion)}`;
             
             item.onclick = function() { detallePrestamo(prestamo); };
             lista.appendChild(item);
@@ -370,8 +374,8 @@ async function detallePrestamo (prestamo) {
     DNI: ${prestamo.prestatario.Documento} <br>
     Teléfono: ${prestamo.prestatario.Telefono} <br>
     </li>
-    <li>Fecha de Extracción: ${prestamo.fecha_extraccion}</li>
-    <li>Fecha de Devolución: ${prestamo.fecha_devolucion}</li>
+    <li>Fecha de Extracción: ${formatearFecha(prestamo.fecha_extraccion)}</li>
+    <li>Fecha de Devolución: ${formatearFecha(prestamo.fecha_devolucion)}</li>
     <li><h4>Productos:</h4></li>
     <li><ul id="detalle-productos" class="detalle-productos" ></ul></li>
     `;
@@ -443,7 +447,7 @@ async function buscarVencimientosProximos() {
             item.innerHTML = `Préstamo N° ${prestamo.id} <br> 
                               ${prestamo.prestatario.Nombre_Completo} <br> 
                               ${prestamo.prestatario.Documento} <br> 
-                              Fecha de Devolución: ${prestamo.fecha_devolucion}`;
+                              Fecha de Devolución: ${formatearFecha(prestamo.fecha_devolucion)}`;
             
             item.appendChild(mensaje); // Agregar el mensaje debajo del texto
             item.onclick = function() { detallePrestamo(prestamo); };
@@ -477,8 +481,8 @@ async function fetchPrestamosFinalizados(query) {
                 Nombre: ${prestamo.prestatario.Nombre_Completo} <br>
                 DNI: ${prestamo.prestatario.Documento} <br>
                 Teléfono: ${prestamo.prestatario.Telefono} <br>
-                <strong>Fecha de Extracción:</strong> ${prestamo.fecha_extraccion} <br>
-                <strong>Fecha de Devolución:</strong> ${prestamo.fecha_devolucion} <br>
+                <strong>Fecha de Extracción:</strong> ${formatearFecha(prestamo.fecha_extraccion)} <br>
+                <strong>Fecha de Devolución:</strong> ${formatearFecha(prestamo.fecha_devolucion)} <br>
                 <strong>Productos:</strong><br>
                 `;
             let ul = document.createElement('ul');
