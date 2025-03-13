@@ -1,0 +1,710 @@
+[
+    {
+      "nombre": "Camilla Modelo 1",
+      "estado": 3,
+      "categoria": 1,
+      "descripcion": "Camilla ajustable con colchón integrado",
+      "prestado": false
+    },
+    {
+      "nombre": "Muleta Plegable",
+      "estado": 2,
+      "categoria": 2,
+      "descripcion": "Muleta plegable de aluminio",
+      "prestado": false
+    },
+    {
+      "nombre": "Colchón Antiescaras Estándar",
+      "estado": null,
+      "categoria": 3,
+      "descripcion": "Colchón antiescaras de espuma",
+      "prestado": false
+    },
+    {
+      "nombre": "Silla de Ruedas Eléctrica",
+      "estado": 1,
+      "categoria": 4,
+      "descripcion": "Silla de ruedas eléctrica con batería recargable",
+      "prestado": false
+    },
+    {
+      "nombre": "Camilla Modelo 2",
+      "estado": null,
+      "categoria": null,
+      "descripcion": "Camilla portátil",
+      "prestado": false
+    },
+    {
+        "nombre": "Silla de Ruedas Plegable",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas plegable de aluminio",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla Hidráulica",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla hidráulica ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta Ajustable",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta ajustable de aluminio",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras de Aire",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sistema de aire",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla Plegable",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla portátil plegable",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas Deportiva",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas ligera para deportes",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte",
+        "estado": 2,
+        "categoria": 1,
+        "descripcion": "Camilla para transporte de pacientes",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta de Madera",
+        "estado": null,
+        "categoria": 2,
+        "descripcion": "Muleta tradicional de madera",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras Premium",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras de alta gama",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Aros Propulsores",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con aros propulsores",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras Económico",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras de bajo costo",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta de Aluminio Ligero",
+        "estado": 1,
+        "categoria": 2,
+        "descripcion": "Muleta de aluminio ligero y resistente",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas Reclinable",
+        "estado": null,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con respaldo reclinable",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Emergencia",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla plegable para emergencias",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Descanso para Piernas",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con soporte ajustable para piernas",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte Ligera",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla ligera para transporte de pacientes",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Mango Ergonómico",
+        "estado": 1,
+        "categoria": 2,
+        "descripcion": "Muleta de aluminio con mango ergonómico",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras de Gel",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con tecnología de gel",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas para Niños",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas ajustable para niños",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla Pediátrica",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla ajustable para niños",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Almohadilla para Axila",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con almohadilla cómoda para axila",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Masajeador",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con función de masaje",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas Todoterreno",
+        "estado": null,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas apta para terrenos difíciles",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla con Barandas Laterales",
+        "estado": 2,
+        "categoria": 1,
+        "descripcion": "Camilla ajustable con barandas laterales",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla Plegable con Ruedas",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla plegable con ruedas para fácil transporte",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta de Fibra de Carbono",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta ligera de fibra de carbono",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Funda",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con funda lavable",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas Reforzada",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas reforzada para mayor durabilidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Rescate",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de rescate para emergencias",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta de Altura Ajustable",
+        "estado": null,
+        "categoria": 2,
+        "descripcion": "Muleta con altura ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras de Latex",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras de latex con ventilación",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas Ultraligera",
+        "estado": 2,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas ultraligera de aluminio",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla con Respaldo Ajustable",
+        "estado": 1,
+        "categoria": 1,
+        "descripcion": "Camilla con respaldo ajustable y ruedas",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Empuñadura Acolchada",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con empuñadura acolchada para comodidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas para Duchas",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas resistente al agua para duchas",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Altura Ajustable",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla con altura ajustable y frenos",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Luz LED",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta con luz LED para mayor visibilidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras Viscoelástico",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con memoria viscoelástica",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Control Manual",
+        "estado": 2,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con control manual desmontable",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla con Bomba Hidráulica",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla con bomba hidráulica para ajuste suave",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Sistema de Amortiguación",
+        "estado": null,
+        "categoria": 2,
+        "descripcion": "Muleta con sistema de amortiguación en la base",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Ventilación",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sistema de ventilación",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Asiento Acolchado",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con asiento acolchado y respaldo",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla con Sistema de Elevación",
+        "estado": 2,
+        "categoria": 1,
+        "descripcion": "Camilla con sistema de elevación automática",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte con Cinturones",
+        "estado": 1,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con cinturones de seguridad",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Apoyo de Mano Ergonómico",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con apoyo de mano ergonómico para mayor comodidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Compresor",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con compresor para inflado automático",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Eje Desmontable",
+        "estado": null,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con eje desmontable para fácil transporte",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Emergencias Plegable",
+        "estado": 1,
+        "categoria": 1,
+        "descripcion": "Camilla plegable para emergencias médicas",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Base Ancha",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta con base ancha para mayor estabilidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Alarma",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con alarma de presión",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Frenos de Seguridad",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con frenos de seguridad integrados",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Reanimación",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla de reanimación con soporte para equipo médico",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta Ajustable para Niños",
+        "estado": 1,
+        "categoria": 2,
+        "descripcion": "Muleta ajustable especialmente diseñada para niños",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte Antiestática",
+        "estado": 2,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con propiedades antiestáticas",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Base Intercambiable",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con base intercambiable para diferentes terrenos",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Termostato",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con termostato ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Suspensión",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con sistema de suspensión para mayor confort",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte Reclinable",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con respaldo reclinable",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta de Material Reciclado",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta ecológica hecha de material reciclado",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Altura Ajustable",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con ajuste de altura",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Reposabrazos Ajustables",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con reposabrazos ajustables y acolchados",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte Infantil",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte ajustable para niños",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Correa para Brazo",
+        "estado": null,
+        "categoria": 2,
+        "descripcion": "Muleta con correa ajustable para el brazo",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Sistema Alterno",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sistema de presión alterno",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Ruedas Antivuelco",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con sistema antivuelco integrado",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla con Sistema de Inmovilización",
+        "estado": 2,
+        "categoria": 1,
+        "descripcion": "Camilla con sistema de inmovilización para pacientes",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Sensor de Movimiento",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con sensor de movimiento para mayor seguridad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras de Celdas",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con celdas de aire",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Batería de Larga Duración",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas eléctrica con batería de larga duración",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte para Ambulancia",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte específica para ambulancias",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Base de Goma Antideslizante",
+        "estado": 1,
+        "categoria": 2,
+        "descripcion": "Muleta con base de goma para mayor adherencia",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Control Remoto",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con ajuste mediante control remoto",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Reposapiés Giratorio",
+        "estado": 2,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con reposapiés giratorio y ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Rescate Compacta",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de rescate compacta y ligera",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Punta Antideslizante",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta con punta antideslizante para mayor seguridad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Ajuste Automático",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sistema de ajuste automático",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Reposacabezas",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con reposacabezas ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte con Suspensión",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con sistema de suspensión",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Correa de Mano Ajustable",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con correa de mano ajustable para mayor comodidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Tecnología de Enfriamiento",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con tecnología de enfriamiento",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Asiento Ergonómico",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con asiento ergonómico y acolchado",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte para Pacientes",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte para pacientes con soporte ajustable",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Soporte para Codo",
+        "estado": null,
+        "categoria": 2,
+        "descripcion": "Muleta con soporte ajustable para el codo",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte con Soporte para Oxígeno",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con soporte integrado para botellas de oxígeno",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Refuerzo de Metal",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta con refuerzo de metal para mayor durabilidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Espuma de Memoria",
+        "estado": 1,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con espuma de memoria viscoelástica",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Manillar Ajustable",
+        "estado": 3,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con manillar ajustable para acompañantes",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte con Frenos",
+        "estado": null,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte con sistema de frenos en las ruedas",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Luz Integrada",
+        "estado": 3,
+        "categoria": 2,
+        "descripcion": "Muleta con luz LED integrada para mayor visibilidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras con Sensor de Movimiento",
+        "estado": 2,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sensor de movimiento para ajuste automático",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Asiento de Gel",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con asiento de gel para mayor comodidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Camilla de Transporte para Emergencias",
+        "estado": 3,
+        "categoria": 1,
+        "descripcion": "Camilla de transporte para emergencias médicas",
+        "prestado": false
+      },
+      {
+        "nombre": "Muleta con Empuñadura Suave",
+        "estado": 2,
+        "categoria": 2,
+        "descripcion": "Muleta con empuñadura suave para mayor comodidad",
+        "prestado": false
+      },
+      {
+        "nombre": "Colchón Antiescaras de Baja Presión",
+        "estado": 3,
+        "categoria": 3,
+        "descripcion": "Colchón antiescaras con sistema de baja presión",
+        "prestado": false
+      },
+      {
+        "nombre": "Silla de Ruedas con Respaldo Ajustable",
+        "estado": 1,
+        "categoria": 4,
+        "descripcion": "Silla de ruedas con respaldo ajustable y reclinable",
+        "prestado": false
+      }
+  ]
+  

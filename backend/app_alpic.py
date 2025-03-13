@@ -20,7 +20,7 @@ bat_path = os.path.join(BASE_DIR,'run_server.bat')
 django_process = subprocess.Popen(bat_path, shell=True)
 
 
-time.sleep(5)
+time.sleep(10)
 
 # Abre la ventana de PyWebView con la URL del servidor Django
 webview.create_window('ALPIC', 'http://127.0.0.1:8000/')
